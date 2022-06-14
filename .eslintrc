@@ -1,0 +1,22 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "extends": [
+    "airbnb",
+    "plugin:react/jsx-runtime"
+  ],
+  "rules": {
+    "no-use-before-define": "off",
+    "semi": "off",
+    "comma-dangle": "off",
+    "linebreak-style": "off",
+    "react/prop-types":"Off",
+    "global-require":"off"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "*.config.js"
+  ]
+}
