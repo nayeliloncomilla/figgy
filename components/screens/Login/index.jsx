@@ -47,8 +47,22 @@ export default function Login() {
     <View style={styles.container}>
       <ImageBackground source={require('../../../assets/fondogorrito.jpg')} resizeMode="cover" style={styles.image}>
         <Title>Login</Title>
-        <FormInput label="Email" control={control} name="email" error={formState.errors.email} />
-        <FormInput label="Password" control={control} name="password" error={formState.errors.password} />
+        <FormInput
+          label="Email"
+          control={control}
+          name="email"
+          error={formState.errors.email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+        />
+        <FormInput
+          label="Password"
+          control={control}
+          name="password"
+          error={formState.errors.password}
+          secureTextEntry
+          autoCapitalize="none"
+        />
         <SolidButton label="Ingresar" onPress={handleSubmit(onSubmit)} />
         <SolidButton label="Registrar" onPress={handleToRegister} />
       </ImageBackground>

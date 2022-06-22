@@ -12,7 +12,10 @@ export default function FormInput({
   label,
   name,
   control,
-  error
+  error,
+  autoCapitalize,
+  keyboardType,
+  secureTextEntry
 }) {
   return (
     <View style={styles.container}>
@@ -22,10 +25,13 @@ export default function FormInput({
         name={name}
         render={({ field }) => (
           <TextInput
+            autoCapitalize={autoCapitalize}
+            keyboardType={keyboardType}
             style={styles.input}
             onBlur={field.onBlur}
             onChangeText={field.onChange}
             value={field.value}
+            secureTextEntry={secureTextEntry}
           />
         )}
       />

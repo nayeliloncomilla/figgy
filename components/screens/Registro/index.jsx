@@ -42,8 +42,22 @@ export default function Registro() {
         style={styles.image}
       >
         <Title>Registrar</Title>
-        <FormInput label="Email" control={control} name="email" error={formState.errors.email} />
-        <FormInput label="Password" control={control} name="password" error={formState.errors.password} />
+        <FormInput
+          label="Email"
+          control={control}
+          name="email"
+          error={formState.errors.email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+        />
+        <FormInput
+          label="Password"
+          control={control}
+          name="password"
+          error={formState.errors.password}
+          secureTextEntry
+          autoCapitalize="none"
+        />
         <SolidButton label="Registrar" onPress={handleSubmit(onSubmit)} />
       </ImageBackground>
     </View>
