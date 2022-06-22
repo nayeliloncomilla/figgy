@@ -1,14 +1,22 @@
 import { View, ImageBackground, ToastAndroid } from 'react-native'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import styles from './Registro.styles'
 import FormInput from '../../common/FormInput'
 import SolidButton from '../../common/SolidButton'
 import Title from '../../common/Title';
+import registerFormSchema from './validations/registroFormSchema';
 
 export default function Registro() {
-  const { control, handleSubmit } = useForm()
+  const { control, handleSubmit, formState } = useForm({
+    defaultValues: {
+      email: '',
+      password: ''
+    },
+    resolver: yupResolver(registerFormSchema)
+  })
   const navigation = useNavigation()
 
   const onSubmit = async (values) => {
@@ -34,8 +42,8 @@ export default function Registro() {
         style={styles.image}
       >
         <Title>Registrar</Title>
-        <FormInput label="Email" control={control} name="email" />
-        <FormInput label="Password" control={control} name="password" />
+        <FormInput label="Email" control={control} name="email" error={formState.errors.email} />
+        <FormInput label="Password" control={control} name="password" error={formState.errors.password} />
         <SolidButton label="Registrar" onPress={handleSubmit(onSubmit)} />
       </ImageBackground>
     </View>

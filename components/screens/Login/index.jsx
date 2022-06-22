@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import {
   View,
   ImageBackground,
@@ -11,9 +12,17 @@ import SolidButton from '../../common/SolidButton'
 import Title from '../../common/Title'
 import styles from './Login.styles'
 import { useAuth } from '../../context/AuthContext';
+import loginFormSchema from './validations/loginFormSchema';
 
 export default function Login() {
-  const { control, handleSubmit } = useForm()
+  const { control, handleSubmit, formState } = useForm({
+    defaultValues: {
+      email: '',
+      password: ''
+    },
+    resolver: yupResolver(loginFormSchema)
+  })
+
   const { startSession } = useAuth()
   const navigation = useNavigation()
 
@@ -38,8 +47,8 @@ export default function Login() {
     <View style={styles.container}>
       <ImageBackground source={require('../../../assets/fondogorrito.jpg')} resizeMode="cover" style={styles.image}>
         <Title>Login</Title>
-        <FormInput label="Email" control={control} name="email" />
-        <FormInput label="Password" control={control} name="password" />
+        <FormInput label="Email" control={control} name="email" error={formState.errors.email} />
+        <FormInput label="Password" control={control} name="password" error={formState.errors.password} />
         <SolidButton label="Ingresar" onPress={handleSubmit(onSubmit)} />
         <SolidButton label="Registrar" onPress={handleToRegister} />
       </ImageBackground>

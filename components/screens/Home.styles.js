@@ -9,6 +9,13 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    marginTop: 85,
+    marginBottom: 16,
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold'
   }
 
 });

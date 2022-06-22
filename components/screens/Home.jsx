@@ -22,12 +22,12 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text>{`hola ${user.email}`}</Text>
       <ImageBackground
         source={require('../../assets/fondocolores.jpg')}
         resizeMode="cover"
         style={styles.image}
       >
+        <Text style={styles.text}>{`hola ${user.email}`}</Text>
         <SolidButton label="Sobre nosotros" onPress={handleToIntro} />
         <SolidButton label="Equipo basico" onPress={handleToEquipobasico} />
         <SolidButton label="Tipos De Fotos" onPress={handleToTiposDeFotos} />

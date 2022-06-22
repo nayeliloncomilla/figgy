@@ -6,8 +6,14 @@ import {
 } from 'react-native';
 import { Controller } from 'react-hook-form'
 import defaultTheme from '../../config/theme';
+import colors from '../../config/colors';
 
-export default function FormInput({ label, name, control }) {
+export default function FormInput({
+  label,
+  name,
+  control,
+  error
+}) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
@@ -23,6 +29,7 @@ export default function FormInput({ label, name, control }) {
           />
         )}
       />
+      {error ? (<Text style={styles.errorText}>{error.message}</Text>) : null}
     </View>
   )
 }
@@ -42,5 +49,10 @@ const styles = StyleSheet.create({
   },
   label: {
     marginBottom: 4
+  },
+  errorText: {
+    fontSize: 12,
+    color: colors.red[500],
+    marginBottom: 2
   }
 });

@@ -47,6 +47,6 @@ const style = StyleSheet.create({
   container: {
     paddingHorizontal: 32,
     paddingVertical: 16,
-    backgroundColor: '#40e0d0'
+    backgroundColor: '#FFFFFF'
   }
 });
