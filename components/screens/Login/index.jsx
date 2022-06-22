@@ -3,24 +3,31 @@ import { useForm } from 'react-hook-form'
 import {
   View,
   ImageBackground,
+  ToastAndroid
 } from 'react-native'
-
+import axios from 'axios';
 import FormInput from '../../common/FormInput'
 import SolidButton from '../../common/SolidButton'
 import Title from '../../common/Title'
 import styles from './Login.styles'
+import { useAuth } from '../../context/AuthContext';
 
 export default function Login() {
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-    }
-  })
+  const { control, handleSubmit } = useForm()
+  const { startSession } = useAuth()
   const navigation = useNavigation()
-  const onSubmit = (values) => {
-    console.log(values)
-    navigation.navigate('Home')
+
+  const onSubmit = async (values) => {
+    try {
+      const response = await axios.post('https://figgy-api.herokuapp.com/api/auth/local', {
+        identifier: values.email,
+        password: values.password
+      })
+      startSession(response.data)
+      navigation.navigate('Home')
+    } catch (e) {
+      ToastAndroid.show(e.response.data.error.message, ToastAndroid.SHORT)
+    }
   }
 
   const handleToRegister = () => {

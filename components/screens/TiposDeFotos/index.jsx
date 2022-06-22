@@ -1,38 +1,52 @@
-import { View } from 'react-native';
-import Title from '../../common/Title';
+import { useNavigation } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
+import {
+  View,
+  FlatList,
+  StyleSheet
+} from 'react-native';
+import axios from 'axios';
+import ArticleItem from './ArticleItem';
 
-const articles = {
-  data: [
-    {
-      id: 1,
-      attributes: {
-        title: 'hola',
-        description: 'oaboriscomotas?',
-        image: 'https://ca-times.brightspotcdn.com/dims4/default/f246b58/2147483647/strip/true/crop/2048x1108+0+0/resize/840x454!/format/webp/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001'
-      }
-    },
-    {
-      id: 2,
-      attributes: {
-        title: 'hola',
-        description: 'oaboriscomotas?',
-        image: 'https://ca-times.brightspotcdn.com/dims4/default/f246b58/2147483647/strip/true/crop/2048x1108+0+0/resize/840x454!/format/webp/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001'
-      }
-    },
-    {
-      id: 3,
-      attributes: {
-        title: 'hola',
-        description: 'oaboriscomotas?',
-        image: 'https://ca-times.brightspotcdn.com/dims4/default/f246b58/2147483647/strip/true/crop/2048x1108+0+0/resize/840x454!/format/webp/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001'
-      }
-    }
-  ]
-}
 export default function TiposDeFotos() {
+  const navigation = useNavigation()
+
+  const handleNavigateToDetail = (article) => {
+    navigation.navigate('ArticleDetail', { article })
+  }
+
+  const [articles, setArticles] = useState()
+
+  useEffect(() => {
+    axios
+      .get('https://figgy-api.herokuapp.com/api/articles/')
+      .then((response) => {
+        setArticles(response.data.data)
+      })
+  }, [])
+
   return (
-    <View>
-      <Title>Tipos de Fotos</Title>
+    <View style={style.container}>
+      {articles ? (
+        <FlatList
+          keyExtractor={(item) => item.id}
+          data={articles}
+          renderItem={({ item }) => (
+            <ArticleItem
+              item={item}
+              onPress={() => handleNavigateToDetail(item)}
+            />
+          )}
+        />
+      ) : null}
     </View>
   )
 }
+
+const style = StyleSheet.create({
+  container: {
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    backgroundColor: '#40e0d0'
+  }
+});
