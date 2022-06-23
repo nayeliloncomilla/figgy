@@ -16,9 +16,8 @@ export default function ArticleDetail() {
         source={{ uri: article?.attributes.image }}
         style={styles.image}
       />
-      <Text styles={styles.text}>
-        Tipo de foto
-        {article?.id}
+      <Text styles={styles.title}>
+        {article?.attributes.title}
       </Text>
       <Text style={styles.text}>
         {article?.attributes.description}
@@ -32,12 +31,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    flex: 1,
-    textAlign: 'center'
+    marginVertical: 24,
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#333',
+    marginHorizontal: 16
   },
   image: {
     width: '100%',
     height: 200,
+  },
+  title: {
+    marginVertical: 24,
+    textAlign: 'center',
+    fontSize: 32,
+    color: '#333',
+    marginHorizontal: 16
   }
 
 })
