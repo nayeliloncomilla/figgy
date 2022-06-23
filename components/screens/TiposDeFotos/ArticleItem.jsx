@@ -38,7 +38,7 @@ const style = StyleSheet.create({
     marginBottom: 8,
     flexDirection: 'row',
     borderRadius: 8,
-    borderColor: '#b3ecec',
+    borderColor: '#8F95FB',
     backgroundColor: '#b3ecec'
   }
 

@@ -12,7 +12,7 @@ import Title from '../../common/Title';
 export default function Equipobasico() {
   return (
     <SafeAreaView style={style.container}>
-      <ImageBackground source={require('../../../assets/fondogorrito.jpg')} resizeMode="cover" style={style.image}>
+      <ImageBackground source={require('../../../assets/ebasic.jpg')} resizeMode="cover" style={style.image}>
         <ScrollView style={style.container}>
           <Title>Equipo Basico</Title>
           <Text>

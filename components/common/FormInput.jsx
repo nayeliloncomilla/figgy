@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import { Controller } from 'react-hook-form'
 import defaultTheme from '../../config/theme';
-import colors from '../../config/colors';
 
 export default function FormInput({
   label,
@@ -25,6 +24,7 @@ export default function FormInput({
         name={name}
         render={({ field }) => (
           <TextInput
+            selectionColor={defaultTheme.primary[500]}
             autoCapitalize={autoCapitalize}
             keyboardType={keyboardType}
             style={styles.input}
@@ -51,14 +51,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    marginBottom: 8
+    marginBottom: 8,
+    backgroundColor: '#FBF0F0',
   },
   label: {
-    marginBottom: 4
+    marginBottom: 4,
+    color: '#FFFF',
   },
   errorText: {
     fontSize: 12,
-    color: colors.red[500],
+    color: '#10E830',
     marginBottom: 2
   }
 });

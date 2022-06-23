@@ -8,6 +8,7 @@ import Equipobasico from './screens/Equipobasico';
 import TiposDeFotos from './screens/TiposDeFotos';
 import ArticleDetail from './screens/TiposDeFotos/ArticlesDetail';
 import { useAuth } from './context/AuthContext';
+import Premium from './screens/Premium';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ export default function StackNavigator() {
             <Stack.Screen name="Equipobasico" component={Equipobasico} />
             <Stack.Screen name="ArticleDetail" component={ArticleDetail} />
             <Stack.Screen name="TiposDeFotos" component={TiposDeFotos} />
+            <Stack.Screen name="Premium" component={Premium} />
           </>
         )}
       </Stack.Navigator>

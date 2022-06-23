@@ -9,7 +9,6 @@ import {
 import axios from 'axios';
 import FormInput from '../../common/FormInput'
 import SolidButton from '../../common/SolidButton'
-import Title from '../../common/Title'
 import styles from './Login.styles'
 import { useAuth } from '../../context/AuthContext';
 import loginFormSchema from './validations/loginFormSchema';
@@ -45,15 +44,13 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../../../assets/fondogorrito.jpg')} resizeMode="cover" style={styles.image}>
-        <Title>Login</Title>
+      <ImageBackground source={require('../../../assets/loginimg.jpg')} resizeMode="cover" style={styles.image}>
         <FormInput
           label="Email"
           control={control}
           name="email"
           error={formState.errors.email}
           autoCapitalize="none"
-          keyboardType="email-address"
         />
         <FormInput
           label="Password"

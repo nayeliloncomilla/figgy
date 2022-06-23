@@ -20,10 +20,13 @@ export default function Home() {
     navigation.navigate('TiposDeFotos')
   }
 
+  const handleToPremium = () => {
+    navigation.navigate('Premium')
+  }
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../../assets/fondocolores.jpg')}
+        source={require('../../assets/home.jpg')}
         resizeMode="cover"
         style={styles.image}
       >
@@ -31,7 +34,7 @@ export default function Home() {
         <SolidButton label="Sobre nosotros" onPress={handleToIntro} />
         <SolidButton label="Equipo basico" onPress={handleToEquipobasico} />
         <SolidButton label="Tipos De Fotos" onPress={handleToTiposDeFotos} />
-        <SolidButton label="Compra Premium" />
+        <SolidButton label="Compra Premium" onPress={handleToPremium} />
         <SolidButton label="Cerrar sesión" onPress={clearSession} />
       </ImageBackground>
     </View>

@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './Registro.styles'
 import FormInput from '../../common/FormInput'
 import SolidButton from '../../common/SolidButton'
-import Title from '../../common/Title';
 import registerFormSchema from './validations/registroFormSchema';
 
 export default function Registro() {
@@ -37,18 +36,16 @@ export default function Registro() {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../../../assets/fondogorrito.jpg')}
+        source={require('../../../assets/registerimg.jpg')}
         resizeMode="cover"
         style={styles.image}
       >
-        <Title>Registrar</Title>
         <FormInput
           label="Email"
           control={control}
           name="email"
           error={formState.errors.email}
           autoCapitalize="none"
-          keyboardType="email-address"
         />
         <FormInput
           label="Password"
